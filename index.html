@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parallax Imagens</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .container {
+        position: relative;
+        margin-top: -5vh;
+        margin-left: -5vw;
+        width: 110vw;
+        height: 110vh;
+        overflow: hidden;
+      }
+
+      .layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.01s ease-out;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="chao.png" class="layer" id="layer1" />
+      <img src="meio.png" class="layer" id="layer2" />
+      <img src="demonho.png" class="layer" id="layer3" />
+      <img src="colunas.png" class="layer" id="layer4" />
+      <img src="fumaca.png" class="layer" id="layer5" />
+    </div>
+
+    <script>
+      const layers = document.querySelectorAll(".layer");
+      const strength = 0.02; // 1%
+
+      document.addEventListener("mousemove", (e) => {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        const offsetX = (e.clientX - centerX) * strength;
+        const offsetY = (e.clientY - centerY) * strength;
+
+        layers.forEach((layer, i) => {
+          const factor = i + 1; // camadas mais profundas movem mais
+          layer.style.transform = `translate(${offsetX * factor}px, ${
+            offsetY * factor
+          }px)`;
+        });
+      });
+    </script>
+  </body>
+</html>

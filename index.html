@@ -19,10 +19,10 @@
 
       .container {
         position: relative;
-        margin-top: -5vh;
-        margin-left: -5vw;
-        width: 110vw;
-        height: 110vh;
+        margin-top: -2vh;
+        margin-left: -2vw;
+        width: 104vw;
+        height: 104vh;
         overflow: hidden;
       }
 
@@ -34,20 +34,34 @@
         transition: transform 0.01s ease-out;
         pointer-events: none;
       }
+
+      .title {
+        z-index: 10000;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+
     </style>
   </head>
   <body>
+    <img src="title.png" class="title" />
     <div class="container">
       <img src="chao.png" class="layer" id="layer1" />
       <img src="meio.png" class="layer" id="layer2" />
       <img src="demonho.png" class="layer" id="layer3" />
       <img src="colunas.png" class="layer" id="layer4" />
       <img src="fumaca.png" class="layer" id="layer5" />
+      
     </div>
+
+    <img src="title.png" class="title" />
 
     <script>
       const layers = document.querySelectorAll(".layer");
-      const strength = 0.02; // 1%
+      const strength = 0.011; // 1%
 
       document.addEventListener("mousemove", (e) => {
         const centerX = window.innerWidth / 2;
